@@ -7,7 +7,8 @@ screen_info = pygame.display.Info()
 size = (width, height) = (int(screen_info.current_w), int(screen_info.current_h))
 screen = pygame.display.set_mode(size)
 clock = pygame.time.Clock()
-color = (0, 200, 255)fish_image = pygame.image.load("egggs.png")
+color = (0, 200, 255)
+fish_image = pygame.image.load("fish.jpg")
 fish_image = pygame.transform.smoothscale(fish_image,(100,100))
 
 fish_rect = fish_image.get_rect()
@@ -15,6 +16,7 @@ fish_rect = fish_image.get_rect()
 fish_rect.center = (width//2,height//2)
 
 speed=pygame.math.Vector2(5,5)
+
 
 
 def movefish():
@@ -32,8 +34,42 @@ def movefish():
     if fish_rect.left<0 or fish_rect.right.width:
         speed[0] *= -1
 
+
+
+
+
+
+
+
+
 def main():
-    while True:
+        while True:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                        pygame.quit(); sys.exit()
+        main = False
+
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT or event.key == ord ("a"):
+                print('left')
+            if event.key == pygame.K_RIGHT or event.key == ord('d'):
+                print('right')
+            if event.type == pygame.K_UP or event.key == ord ('w'):
+                print('jump')
+
+        if event.type == pygame.KEY_UP:
+            if event.key == pygame.K_LEFT or event.key == ord('a'):
+                print('left stop')
+            if event.key == pygame.K_RIGHT or event.key == ord("d"):
+                print('right stop')
+            if event.key == ord ('q'):
+                pygame.quit()
+                sys.exit()
+                main = False
+
+
+
+
         clock.tick(60)
         movefish()
         screen.fill(color)
@@ -43,3 +79,9 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+
+
+
+w
